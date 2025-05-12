@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>あなたの死までの残り時間</h2>
+<ul>
+  <li>年: {{ years }} 年</li>
+  <li>週: {{ weeks }} 週</li>
+  <li>土日: {{ weekends }} 回</li>
+  <li>日: {{ days }} 日</li>
+  <li>時: {{ hours }} 時間</li>
+  <li>分: {{ minutes }} 分</li>
+  <li>秒: {{ seconds }} 秒</li>
+</ul>
+<a href="{{ url_for('death.death_counter') }}">もう一度計算する</a>
+{% endblock %}

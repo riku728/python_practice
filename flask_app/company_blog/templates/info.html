@@ -44,5 +44,50 @@
             <p>従業員：９９９名</p>
         </div>
     </section>
+    <section id="company_map">
+        <h2>マップ</h2>
+        <div id="map" style="height: 500px; width: 100%;"></div>
+
+        <script>
+        function initMap() {
+            const location = { lat: 35.681236, lng: 139.767125 };  // 東京駅
+            const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 14,
+            center: location,
+            });
+
+            if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function(position) {
+                const userLocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                };
+
+                // 現在地にズームイン
+                map.setCenter(userLocation);
+                map.setZoom(15);
+
+                // 現在地にマーカーを設置
+                new google.maps.Marker({
+                    position: userLocation,
+                    map: map,
+                    title: "あなたの現在地",
+                });
+                },
+                function() {
+                alert("現在地を取得できませんでした。位置情報の許可が必要です。");
+                }
+            );
+            } else {
+            alert("このブラウザは位置情報に対応していません。");
+            }
+        }
+        </script>
+
+        <script async
+        src="https://maps.googleapis.com/maps/api/js?key=hoge&callback=initMap">
+        </script>
+    </section>
 
 {% endblock %}

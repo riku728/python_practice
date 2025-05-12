@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>死までのカウントダウン</h2>
+<form method="POST">
+  生年月日：<input type="date" name="birthdate" value="1992-07-28" required><br>
+  想定寿命（年）：<input type="number" name="lifespan" value="80" required><br>
+  <input type="submit" value="計算">
+</form>
+{% endblock %}
